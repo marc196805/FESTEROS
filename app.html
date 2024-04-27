@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Cuenta</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .option {
+            margin-bottom: 20px;
+        }
+
+        .option h2 {
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.5);
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #total {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Calculadora de Cuenta</h1>
+
+        <div class="option">
+            <h2>BEBIDAS</h2>
+            <label><input type="checkbox" class="item" value="1.5"> Refrescos</label>
+            <label><input type="checkbox" class="item" value="1.5"> Cerveza</label>
+            <label><input type="checkbox" class="item" value="1"> Agua pequeña</label>
+            <label><input type="checkbox" class="item" value="1.5"> Agua Grande</label>
+            <label><input type="checkbox" class="item" value="1.5"> Granizat</label>
+            <label><input type="checkbox" class="item" value="4"> Cubatas</label>
+            <label><input type="checkbox" class="item" value="3.5"> Burret</label>
+            <label><input type="checkbox" class="item" value="4"> Mentireta</label>
+            <label><input type="checkbox" class="item" value="1"> Xupitos</label>
+        </div>
+
+        <div class="option">
+            <h2>MENJAR</h2>
+            <label><input type="checkbox" class="item" value="3"> Bocadillos tortilla patata</label>
+            <label><input type="checkbox" class="item" value="2"> Perritos</label>
+            <label><input type="checkbox" class="item" value="3.5"> Hamburguesa</label>
+            <label><input type="checkbox" class="item" value="1.5"> Patatas fritas</label>
+            <label><input type="checkbox" class="item" value="3.5"> TAPA + REFRESCO</label>
+        </div>
+
+        <div class="option">
+            <h2>POSTRES</h2>
+            <label><input type="checkbox" class="item" value="1.5"> Fabiola</label>
+            <label><input type="checkbox" class="item" value="1.5"> Coca de carabassa i chocolate</label>
+            <label><input type="checkbox" class="item" value="2.5"> Tarta 3 chocolates</label>
+            <label><input type="checkbox" class="item" value="2.5"> Tarta de queso</label>
+            <label><input type="checkbox" class="item" value="2.5"> Flan de café</label>
+            <label><input type="checkbox" class="item" value="1.5"> Calatrava</label>
+        </div>
+
+        <div class="option">
+            <h2>DINARS DISSABTE</h2>
+            <label><input type="checkbox" class="item" value="4"> Arròs al forn</label>
+            <label><input type="checkbox" class="item" value="4"> Paella carxofa i faves</label>
+            <label><input type="checkbox" class="item" value="4"> Arròs a banda</label>
+        </div>
+
+        <hr>
+
+        <div style="text-align: center;">
+            <label for="money">Dinero entregado: </label>
+            <input type="number" id="money" min="0" style="padding: 5px; border-radius: 5px;">
+            <button onclick="calculateTotal()">Calcular Total</button>
+        </div>
+
+        <div id="total"></div>
+
+    </div>
+
+    <script>
+        function calculateTotal() {
+            const items = document.querySelectorAll('.item:checked');
+            let total = 0;
+            items.forEach(item => {
+                total += parseFloat(item.value);
+            });
+            const moneyGiven = parseFloat(document.getElementById('money').value);
+            const change = moneyGiven - total;
+            document.getElementById('total').innerHTML = `
+      <h2 style="text-align: center; margin-top: 20px;">Total a pagar: ${total.toFixed(2)}€</h2>
+      <h3 style="text-align: center; margin-top: 10px;">Cambio: ${change.toFixed(2)}€</h3>
+    `;
+        }
+    </script>
+
+</body>
+
+</html>
