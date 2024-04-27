@@ -472,6 +472,10 @@
       const checkboxes = document.querySelectorAll('.item:checked');
       checkboxes.forEach(checkbox => {
         checkbox.checked = false;
+        var quantities = document.querySelectorAll('.quantity');
+      quantities.forEach(function(quantity) {
+        quantity.value = '1';
+      });
       });
       total();
     });
