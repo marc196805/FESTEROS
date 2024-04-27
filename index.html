@@ -1,244 +1,471 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Cuenta</title>
-<style>
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f3f3f3;
-  }
-  .container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
-  }
-  h1, h2, h3 {
-    text-align: center;
-    color: #333;
-  }
-  .option {
-    margin-bottom: 20px;
-  }
-  .option h2 {
-    color: #555;
-    margin-bottom: 10px;
-    font-size: 1.2em;
-  }
-  label {
-    display: block;
-    margin-bottom: 12px;
-    font-size: 1.1em;
-  }
-  input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.5);
-  }
-  select {
-    width: 70px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  button {
-    padding: 12px 24px;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.1em;
-  }
-  button:hover {
-    background-color: #45a049;
-  }
-  #total {
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 20px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Cuenta</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f3f3;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      height: 3%;
+      top: 0;
+      z-index: 1000; /* Asegura que el encabezado esté encima de otros elementos */
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    #headerTotal {
+      position: absolute;
+      top: 20px;
+      right: 50px;
+      font-size: 18px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      text-align: center;
+      color: #333;
+    }
+
+    .option {
+      margin-bottom: 20px;
+    }
+
+    .option h2 {
+      color: #555;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.1em;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.5);
+    }
+
+    select {
+      width: 70px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #total {
+      font-size: 1.2em;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <div id="headerTotal"></div>
+  </header>
+  <div class="container">
+    <h1>Calculadora de Cuenta</h1>
 
-<div class="container">
-  <h1>Calculadora de Cuenta</h1>
+    <div class="option">
+      <h2>BEBIDAS</h2>
+      <label><input type="checkbox" class="item" value="1.5"> Refrescos (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1.5"> Cerveza (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <!-- Continúa con las demás opciones de bebidas aquí -->
+      <label><input type="checkbox" class="item" value="1"> Agua pequeña (1€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1.5"> Agua Grande (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1.5"> Granizat (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="4"> Cubatas (4€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="3.5"> Burret (3.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="4"> Mentireta (4€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1"> Xupitos (1€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+    </div>
 
-  <div class="option">
-    <h2>BEBIDAS</h2>
-    <label><input type="checkbox" class="item" value="1.5"> Refrescos (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1.5"> Cerveza (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <!-- Continúa con las demás opciones de bebidas aquí -->
-    <label><input type="checkbox" class="item" value="1"> Agua pequeña (1€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1.5"> Agua Grande (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1.5"> Granizat (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="4"> Cubatas (4€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="3.5"> Burret (3.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="4"> Mentireta (4€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1"> Xupitos (1€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
+    <div class="option">
+      <h2>MENJAR</h2>
+      <!-- Añade las opciones de comida aquí -->
+      <label><input type="checkbox" class="item" value="3"> Bocadillos tortilla patata (3€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="2"> Perritos (2€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="3.5"> Hamburguesa (3.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1.5"> Patatas fritas (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+
+    </div>
+
+    <div class="option">
+      <h2>TAPAS</h2>
+
+      <label><input type="checkbox" class="item" value="3.5"> TAPA + REFRESCO (3.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+    </div>
+
+    <div class="option">
+      <h2>POSTRES</h2>
+      <!-- Añade las opciones de postres aquí -->
+      <label><input type="checkbox" class="item" value="1.5"> Fabiola (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1.5"> Coca de carabassa i chocolate (1.5€) <select
+          class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="2.5"> Tarta 3 chocolates (2.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="2.5"> Tarta de queso (2.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="2.5"> Flan de café (2.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="1.5"> Calatrava (1.5€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+    </div>
+
+    <div class="option">
+      <h2>DINARS DISSABTE</h2>
+      <!-- Añade las opciones de cenas aquí -->
+      <label><input type="checkbox" class="item" value="4"> Arròs al forn (4€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="4"> Paella carxofa i faves (4€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+      <label><input type="checkbox" class="item" value="4"> Arròs a banda (4€) <select class="quantity">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select></label>
+    </div>
+
+    <hr>
+    <div></div>
+    <div style="text-align: center;">
+      <label for="money">Dinero entregado: </label>
+      <input type="number" id="money" min="0" style="padding: 8px; border-radius: 5px;">
+      <button onclick="calculateTotal()">Calcular Total</button>
+    </div>
+
+    <div id="total"></div>
+
   </div>
 
-  <div class="option">
-    <h2>MENJAR</h2>
-    <!-- Añade las opciones de comida aquí -->
-    <label><input type="checkbox" class="item" value="3"> Bocadillos tortilla patata (3€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="2"> Perritos (2€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="3.5"> Hamburguesa (3.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1.5"> Patatas fritas (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    
-  </div>
-
-  <div class="option">
-    <h2>TAPAS</h2>
-
-    <label><input type="checkbox" class="item" value="3.5"> TAPA + REFRESCO (3.5€) <select class="quantity">
-        <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-        <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-        <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-        <option value="10">10</option></select></label>
-  </div>
-
-  <div class="option">
-    <h2>POSTRES</h2>
-    <!-- Añade las opciones de postres aquí -->
-    <label><input type="checkbox" class="item" value="1.5"> Fabiola (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1.5"> Coca de carabassa i chocolate (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="2.5"> Tarta 3 chocolates (2.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="2.5"> Tarta de queso (2.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="2.5"> Flan de café (2.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="1.5"> Calatrava (1.5€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-  </div>
-
-  <div class="option">
-    <h2>DINARS DISSABTE</h2>
-    <!-- Añade las opciones de cenas aquí -->
-    <label><input type="checkbox" class="item" value="4"> Arròs al forn (4€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="4"> Paella carxofa i faves (4€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-    <label><input type="checkbox" class="item" value="4"> Arròs a banda (4€) <select class="quantity">
-      <option value="1">1</option><option value="2">2</option><option value="3">3</option>
-      <option value="4">4</option><option value="5">5</option><option value="6">6</option>
-      <option value="7">7</option><option value="8">8</option><option value="9">9</option>
-      <option value="10">10</option></select></label>
-  </div>
-
-  <hr>
-  
-  <div style="text-align: center;">
-    <label for="money">Dinero entregado: </label>
-    <input type="number" id="money" min="0" style="padding: 8px; border-radius: 5px;">
-    <button onclick="calculateTotal()">Calcular Total</button>
-  </div>
-
-  <div id="total"></div>
-
-</div>
-
-<script>
-  function calculateTotal() {
-    const items = document.querySelectorAll('.item:checked');
-    let total = 0;
-    items.forEach(item => {
-      const quantity = parseFloat(item.parentElement.querySelector('.quantity').value);
-      total += parseFloat(item.value) * quantity;
-    });
-    const moneyGiven = parseFloat(document.getElementById('money').value);
-    const change = moneyGiven - total;
-    document.getElementById('total').innerHTML = `
+  <script>
+    function calculateTotal() {
+      const items = document.querySelectorAll('.item:checked');
+      let total = 0;
+      items.forEach(item => {
+        const quantity = parseFloat(item.parentElement.querySelector('.quantity').value);
+        total += parseFloat(item.value) * quantity;
+      });
+      const moneyGiven = parseFloat(document.getElementById('money').value);
+      const change = moneyGiven - total;
+      document.getElementById('total').innerHTML = `
       <h2 style="text-align: center; margin-top: 20px;">Total a pagar: ${total.toFixed(2)}€</h2>
-      <h3 style="text-align: center; margin-top: 10px;">Cambio: ${change.toFixed(2)}€</h3>
-    `;
-  }
-</script>
+      <h3 style="text-align: center; margin-top: 10px;">Cambio: ${change.toFixed(2)}€</h3>`;
+      document.getElementById('headerTotal').innerHTML = `<p>Total: ${total.toFixed(2)}€</p>`;
+    }
+    function total() {
+      const items = document.querySelectorAll('.item:checked');
+      let total = 0;
+      items.forEach(item => {
+        const quantity = parseFloat(item.parentElement.querySelector('.quantity').value);
+        total += parseFloat(item.value) * quantity;
+      });
+      const moneyGiven = parseFloat(document.getElementById('money').value);
+      const change = moneyGiven - total;
+      document.getElementById('headerTotal').innerHTML = `<p>Total: ${total.toFixed(2)}€</p>`;
+    }
+    window.onload = total;
 
+    // Añadimos esta función para llamar a 'total()' cada vez que se selecciona un producto
+    document.querySelectorAll('.item').forEach(item => {
+      item.addEventListener('change', total);
+    });
+
+    // Añadimos esta función para llamar a 'total()' cada vez que se cambia la cantidad de un producto
+    document.querySelectorAll('.quantity').forEach(quantity => {
+      quantity.addEventListener('change', total);
+    });
+
+  </script>
 </body>
+
 </html>
